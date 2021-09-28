@@ -28,10 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Mendapatkan nilai input vertical (-1,0,1)
         float v = Input.GetAxisRaw("Vertical");
-        if(h != 0)
-        {
-            Debug.Log(h);
-        }
+        
         Move(h, v);
         //turning berdasarkan posisi mouse di screen yang di raycast ke floor terus titik transform yang ter hit di subtract dengan player position , kemuadian di masukan ke fungsi quarternion rotasi agar di ubah menjadi sebuah rotasi
         Turning();
@@ -42,12 +39,12 @@ public class PlayerMovement : MonoBehaviour
     //Method player dapat berjalan
     void Move(float h, float v)
     {
+        
         //Set nilai x dan y
         movement.Set(h, 0f, v);
 
         //Menormalisasi nilai vector agar total panjang dari vector adalah 1
         movement = movement.normalized * speed * Time.deltaTime;
-
         //Move to position
         //playerRigidbody.MovePosition(transform.position + movement);
         //mencoba menggunakan force saja ketimbang kecepatan tetap , dikarenakan movement terasa terlalu static untuk selera saya
