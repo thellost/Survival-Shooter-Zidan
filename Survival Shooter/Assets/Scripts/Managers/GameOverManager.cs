@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOverManager : MonoBehaviour
 {
+    public TextMeshProUGUI warningText;
     public PlayerHealth playerHealth;       
     public float restartDelay = 5f;            
 
@@ -22,7 +24,6 @@ public class GameOverManager : MonoBehaviour
         if (playerHealth.currentHealth <= 0)
         {
             anim.SetTrigger("GameOver");
-
             restartTimer += Time.deltaTime;
 
             if (restartTimer >= restartDelay)
@@ -30,5 +31,10 @@ public class GameOverManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
+    }
+    public void ShowWarning(float enemyDistance)
+    {
+        warningText.text = string.Format("! {0} m", Mathf.RoundToInt(enemyDistance));
+        anim.SetTrigger("Warning");
     }
 }

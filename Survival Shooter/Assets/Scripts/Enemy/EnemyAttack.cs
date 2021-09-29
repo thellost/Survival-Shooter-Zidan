@@ -32,7 +32,7 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //Set player in range
-        if (other.gameObject == player)
+        if (other.gameObject == player && other.isTrigger == false)
         {
             playerInRange = true;
         }
