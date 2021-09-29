@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     Animator anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
-    //PlayerShooting playerShooting;
+    PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
 
@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         playerAudio = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovement>();
 
-        //playerShooting = GetComponentInChildren <PlayerShooting> ();
+        playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
     }
 
@@ -65,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
         //Memainkan suara ketika terkena damage
         playerAudio.Play();
 
-        //Memanggil method Death() jika darahnya kurang dari sama dengan 10 dan belu mati
+        //Memanggil method Death() jika darahnya kurang dari sama dengan 10 dan belum mati
         if (currentHealth <= 0 && !isDead)
         {
             Death();
@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        //playerShooting.DisableEffects ();
+        playerShooting.DisableEffects ();
 
         //mentrigger animasi Die
         anim.SetTrigger("Die");
@@ -89,7 +89,10 @@ public class PlayerHealth : MonoBehaviour
         //mematikan script player movement
         playerMovement.enabled = false;
 
-        //playerShooting.enabled = false;
+
+        playerShooting.enabled = false;
+        GetComponent<InputHandler>().enabled = false;
+        Debug.Log("mati");
     }
 
 

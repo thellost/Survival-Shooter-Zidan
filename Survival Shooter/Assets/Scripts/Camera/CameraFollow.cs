@@ -7,8 +7,8 @@ public class CameraFollow : MonoBehaviour
      public Transform target;
     public float smoothing = 5f;
     private Camera cam;
-    [SerializeField] float XThreshold;
-    [SerializeField] float ZThreshold;
+    [SerializeField] float XThreshold = 5;
+    [SerializeField] float ZThreshold = 40;
 
 
     Vector3 offset;

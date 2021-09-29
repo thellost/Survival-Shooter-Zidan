@@ -24,20 +24,20 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //Mendapatkan nilai input horizontal (-1,0,1)
-        float h = Input.GetAxisRaw("Horizontal");
+        //float h = Input.GetAxisRaw("Horizontal");
 
         //Mendapatkan nilai input vertical (-1,0,1)
-        float v = Input.GetAxisRaw("Vertical");
+        //float v = Input.GetAxisRaw("Vertical");
         
-        Move(h, v);
+        //Move(h, v);
         //turning berdasarkan posisi mouse di screen yang di raycast ke floor terus titik transform yang ter hit di subtract dengan player position , kemuadian di masukan ke fungsi quarternion rotasi agar di ubah menjadi sebuah rotasi
         Turning();
         //meng animasi relatif terhadap input axis horizontal dan vertikal
-        Animating(h, v);
+        //Animating(h, v);
     }
 
     //Method player dapat berjalan
-    void Move(float h, float v)
+    public void Move(float h, float v)
     {
         
         //Set nilai x dan y
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Animating(float h, float v)
+    public void Animating(float h, float v)
     {
         bool walking = h != 0f || v != 0f;
         anim.SetBool("IsWalking", walking);

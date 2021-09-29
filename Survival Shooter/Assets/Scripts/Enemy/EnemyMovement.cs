@@ -11,10 +11,10 @@ public class EnemyMovement : MonoBehaviour
 
     void Awake()
     {
-        //Cari game object dengan tag player
+        //Cari game object with tag player
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        //Mendapatkan Reference component
+        //Mendapatkan componen reference
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -23,14 +23,15 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        //Memindahkan posisi player
+        //Pindah ke player position
         if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
         {
             nav.SetDestination(player.position);
         }
-        else //Hentikan moving
+        else //Stop moving
         {
             nav.enabled = false;
         }
     }
+
 }
